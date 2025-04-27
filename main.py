@@ -24,12 +24,17 @@ else:
                   swagger_ui_parameters={"persistAuthorization": True},
                   root_path=settings.base_path
                   )
+    
+
 
 '''
 =====================================================
 # Middleware setup things happens here
 =====================================================
 '''
+
+from app.utils.exception_handler import *
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allows all origins
@@ -76,9 +81,11 @@ async def lifespan(app: FastAPI):
         logger.info('[*] PostgreSQL Database connected successfully.✅')
     yield
 
+
     logger.info('[*] Database disconnected successfully.✅')
 
 app.router.lifespan_context = lifespan
+
 
 
 if __name__ == "__main__":
