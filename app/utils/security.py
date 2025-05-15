@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta, timezone
 import os
 from typing import Optional
+from fastapi import Depends
+from fastapi.security import HTTPBearer
 from jose import jwt
 from app.core.config import settings
 import hashlib
@@ -105,3 +107,15 @@ def decrypt_secret(encrypted_secret: str) -> str:
     # Unpad the secret
     unpadder = padding.PKCS7(algorithms.AES.block_size).unpadder()
     return unpadder.update(padded_secret) + unpadder.finalize()
+
+
+async def get_current_user(token: HTTPBearer = Depends(HTTPBearer())):
+    """
+    Get the current user from the token.
+    """
+    try:
+        payload = decode_token(token.credentials)
+        print(payload)
+        return payload
+    except Exception as e:
+        raise ValueError("Invalid token") from e
