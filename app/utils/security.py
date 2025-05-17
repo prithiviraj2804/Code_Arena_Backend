@@ -115,7 +115,6 @@ async def get_current_user(token: HTTPBearer = Depends(HTTPBearer())):
     """
     try:
         payload = decode_token(token.credentials)
-        print(payload)
-        return payload
+        return payload.get("id")
     except Exception as e:
         raise ValueError("Invalid token") from e

@@ -1,0 +1,42 @@
+{
+    "problems": [ 
+        {
+            "id": 1,
+            "title": "String Reverse",
+            "description": "Write a function that takes a string as input and returns the string reversed.",
+            "difficulty": "easy",
+            "tags": ["string", "algorithm"],
+            "examples": [
+                {
+                    "input": "hello",
+                    "output": "olleh"
+                },
+                {
+                    "input": "world",
+                    "output": "dlrow"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Palindrome Check",
+            "description": "Write a function that checks if a given string is a palindrome.",
+            "difficulty": "easy",
+            "tags": ["string", "algorithm"],
+            "examples": [
+                {
+                    "input": "racecar",
+                    "output": true
+                },
+                {
+                    "input": "hello",
+                    "output": false
+                }
+            ]
+        },
+        {
+            
+        }
+    ]           
+  }
+  
